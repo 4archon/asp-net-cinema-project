@@ -1,0 +1,125 @@
+@model ProfileMovieVM
+<h2>@Model.title</h2>
+<h7>@Model.tagline</h7>
+<br><br>
+<div class="container">
+  <div class="row align-items-start">
+    <div class="col text-center">
+      <figure class="figure">
+        <img src="..." class="figure-img img-fluid rounded" alt="...">
+        <figcaption class="figure-caption">A caption for the above image.</figcaption>
+      </figure>
+    </div>
+    <div class="col">
+			<h5 class="text-start">Infomation:</h4>
+			<table class="table text-start">
+				<tbody>
+					<tr>
+						<td>Genre:</td>
+						<td>@Model.genres</td>
+					</tr>
+					<tr>
+						<td>Relese date:</td>
+						<td>@Model.date</td>
+					</tr>
+					<tr>
+						<td>Production companies:</td>
+						<td>@Model.companies</td>
+					</tr>
+					<tr>
+						<td>Countries of origin:</td>
+						<td>@Model.countries</td>
+					</tr>
+					<tr>
+						<td>Runtime:</td>
+						<td>@Model.runtime</td>
+					</tr>
+					<tr>
+						<td>Status:</td>
+						<td>@Model.status</td>
+					</tr>
+					<tr>
+						<td>Language:</td>
+						<td>@Model.language</td>
+					</tr>
+					<tr>
+						<td>Revenue:</td>
+						<td>@Model.revenue $</td>
+					</tr>					
+					<tr>
+						<td>Budget:</td>
+						<td>@Model.budget $</td>
+					</tr>
+					<tr>
+						<td>Homepage:</td>
+						<td><a href=@Model.homepage>Click here</a></td>
+					</tr>
+				</tbody>
+			</table>
+    </div>        
+  </div>
+</div>
+<div class="card mb-3">
+  <img src="..." class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">Overview:</h5>
+    <p class="card-text">@Model.overview</p>
+		<h4 class="text">Score: @Model.vote_avg</h4>
+		<h7 class="text">Votes: @Model.vote_count</h7>
+  </div>
+</div>
+<br><br>
+<div class="container">
+  <div class="row align-items-start">
+    <div class="col">
+			<h5 class="test-start">Actors</h5>
+			<table class="table test-start">
+				<thead>
+					<tr>
+						<td>Actor's name</td>
+						<td>Character</td>
+					</tr>
+				</thead>
+				<tbody>
+					@for (int i = 0; i < Model.fisrt_len; i++)
+					{
+						<tr>
+							<td>
+								<a class="text-dark" asp-controller="Profile" asp-action="Actor" asp-route-id=@Model.actor_id[i]>
+									@Model.name_actor[i]
+								</a>
+							</td>
+							<td>@Model.character[i]</td>
+						</tr>
+					}
+				</tbody>
+			</table>
+		</div>
+    <div class="col">
+			<h5 class="text-start">Crew</h5>
+			<table class="table text-start">
+				<thead>
+					<tr>
+						<td>Worker's name</td>
+						<td>Department</td>
+						<td>Job</td>
+					</tr>
+				</thead>
+				<tbody>
+					@for (int i = 0; i < Model.second_len; i++)
+					{
+						<tr>
+							<td>
+								<a class="text-dark" asp-controller="Profile" asp-action="Worker" asp-route-id=@Model.worker_id[i]>
+									@Model.name_worker[i]
+								</a>
+							</td>
+							<td>@Model.department[i]</td>
+							<td>@Model.job[i]</td>
+						</tr>
+					}
+				</tbody>
+			</table>
+    </div>        
+  </div>
+</div>

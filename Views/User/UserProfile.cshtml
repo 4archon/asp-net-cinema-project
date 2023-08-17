@@ -1,0 +1,74 @@
+@model UserProfileVM
+
+<h2>@Model.name @Model.surname</h2>
+<div class="container">
+  <div class="row align-items-start">
+    <div class="col-4 text-center">
+      <figure class="figure">
+        <img src="..." class="figure-img img-fluid rounded" alt="...">
+        <figcaption class="figure-caption">A caption for the above image.</figcaption>
+      </figure>
+    </div>
+    <div class="col">
+      <table class="table table-hover">
+				<tbody>
+					<tr>
+						<td>Email:</td>
+						<td>@Model.email</td>
+					</tr>
+					<tr>
+						<td>Birthday:</td>
+						<td>@Model.birthday</td>
+					</tr>
+					<tr>
+						<td>Age:</td>
+						<td>@Model.age</td>
+					</tr>
+					<tr>
+						<td>Initials:</td>
+						<td>@Model.surname @Model.name[0].</td>
+					</tr>
+				</tbody>
+			</table>
+    </div>
+  </div>
+</div>
+<br><br>
+<table class="table">
+	<thead>
+		<tr>
+			<td>№</td>
+			<td>Movie title</td>
+			<td>Seance starts at</td>
+			<td>Seat</td>
+			<td>Print the ticket</td>
+			<td>Return the ticket</td>
+		</tr>
+	</thead>
+	<tbody>
+		@for (int i = 0; i < Model.len; i++)
+		{
+			<tr>
+				<td>
+					@(i+1).
+				</td>
+				<td>
+					<a class="text-dark" asp-controller="Profile" asp-action="Movie" asp-route-id=@Model.movieid[i]>@Model.title[i]</a>
+				</td>
+				<td>
+					@Model.time[i]
+				</td>
+				<td>
+					@Model.chair[i]
+				</td>
+				<td>
+					<a class="btn btn-primary" asp-controller="Download" asp-action="Ticket" asp-route-ticket=@Model.ticketid[i]>print the ticket</a>
+				</td>
+				<td>
+					<a class="btn btn-danger" asp-controller="Seances" asp-action="ReturnTicket" asp-route-ticket=@Model.ticketid[i]>return the ticket</a>
+				</td>
+			</tr>
+		}
+
+	</tbody>
+</table>

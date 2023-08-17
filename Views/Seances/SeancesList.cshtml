@@ -1,0 +1,21 @@
+@model SeancesListVM
+<div class="row row-cols-1 row-cols-md-3 g-4">
+@for (int i = 0; i < Model.len; i++)
+{
+    <div class="col">
+      <div class="card h-100">
+        @* <img src="..." class="card-img-top" alt="..."> *@
+        <div class="card-body">
+          <h5 class="card-title">
+            <a class="nav-link text-dark" asp-controller="Profile" asp-action="Movie" asp-route-id=@Model.movieid[i]>@Model.title[i]</a>
+          </h5>
+          <p class="card-text">Seance time: @Model.time[i]</p>
+          <p class="card-text">Runtime: @Model.runtime[i]</p>
+          <p class="card-text">Nubber of seats: @Model.number_chair[i]</p>
+          <p class="card-text">Price: @Model.price[i] $</p>
+          <a class="btn btn-primary" asp-controller="Seances" asp-action="Tickets" asp-route-seance=@Model.seanceid[i]>Buy ticket</a>
+        </div>
+      </div>
+    </div>   
+}
+</div>

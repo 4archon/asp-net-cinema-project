@@ -1,0 +1,24 @@
+@model ExSearchVM
+<form method="post">
+  <div class="mb-3">
+    <label class="form-label">What you gonna search</label>
+    <input class="form-control" placeholder="Search movie, actor or worker" asp-for="search_value">
+  </div>
+  <div class="mb-3 form-check">
+    <input type="radio" class="form-check-input" asp-for="radio_str" value="movie">
+    <label class="form-check-label">only movie</label>
+  </div>
+  <div class="mb-3 form-check">
+    <input type="radio" class="form-check-input" asp-for="radio_str" value="actor">
+    <label class="form-check-label">only actor</label>
+  </div>
+  <div class="mb-3 form-check">
+    <input type="radio" class="form-check-input" asp-for="radio_str" value="worker">
+    <label class="form-check-label">only worker</label>
+  </div>
+  <div class="mb-3 form-check">
+    <input type="radio" class="form-check-input" asp-for="radio_str" value="">
+    <label class="form-check-label">all</label>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>

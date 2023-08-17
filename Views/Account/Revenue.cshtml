@@ -1,0 +1,43 @@
+@model RevenueVM
+<h1>Revenue account</h1>
+<br><br>
+<table class="table">
+	<thead>
+		<tr>
+			<td>№</td>
+			<td>Movie title</td>
+			<td>Current revenue</td>
+			<td>Potential Revenue</td>
+            <td>Shortage</td>
+		</tr>
+	</thead>
+	<tbody>
+		@for (int i = 0; i < Model.len; i++)
+		{
+			<tr>
+				<td>
+					@(i+1).
+				</td>
+				<td>
+					<a class="text-dark" asp-controller="Profile" asp-action="Movie" asp-route-id=@Model.movieid[i]>@Model.title[i]</a>
+				</td>
+				<td>
+					@Model.revenue[i]
+				</td>
+				<td>
+					@Model.potential_rev[i]
+				</td>
+                <td>
+					@Model.sub[i]
+				</td>
+			</tr>
+		}
+        <tr>
+            <td>Total</td>
+            <td>All titles</td>
+            <td>@Model.sum_rev</td>
+            <td>@Model.sum_pot</td>
+            <td>@Model.sum_sub</td>
+        </tr>
+	</tbody>
+</table>

@@ -1,0 +1,38 @@
+@model AuthorizationVM
+<form asp-controller="Authorization" asp-action="Autho" method="post">
+	<div class="form-floating mb-3 w-50">
+		@if (!Model.invalid)
+		{
+			<input asp-for="email" class="form-control" id="floatingInput">
+	  	<label for="floatingInput">Email address</label>	
+		}
+		else
+		{
+			<input asp-for="email" class="form-control is-invalid" id="floatingInputInvalid">
+  		<label for="floatingInputInvalid">
+				<span asp-validation-for="email"></span>
+			</label>	
+		}
+	</div>
+	<div class="form-floating mb-3 w-50">
+		@if (!Model.invalid)
+		{
+			<input asp-for="password" type="password" class="form-control" id="floatingPassword">
+	  	<label for="floatingPassword">Password</label>	
+		}
+		else
+		{
+			<input asp-for="password" type="password" class="form-control is-invalid" id="floatingPasswordInvalid">
+			<label for="floatingInputInvalid">
+				<span asp-validation-for="password"></span>
+			</label>
+		}
+	</div>
+	@if (Model.exists == false)
+	{
+		<div class="alert alert-danger w-50" role="alert">
+			User is not found
+		</div>
+	}
+	<input class="btn btn-outline-success" type="submit" value="Sign in"></input>
+</form>

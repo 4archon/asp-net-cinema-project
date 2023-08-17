@@ -1,0 +1,22 @@
+@model TicketsVM
+<form asp-controller="Seances" asp-action="BuyTickets" method="post">
+    @for (int i = 0; i < Model.len; i++)
+    {
+        @if (Model.userid[i] is not null)
+        {
+            <div class="mb-3 form-check">
+                <input name="tickets" type="checkbox" class="form-check-input" value=@Model.id[i] disabled>
+                <label class="form-check-label">@Model.chair[i]</label>
+            </div>    
+        }
+        else
+        { 
+        <div class="mb-3 form-check">
+            <input name="tickets" type="checkbox" class="form-check-input" value=@Model.id[i]>
+            <label class="form-check-label">@Model.chair[i]</label>
+        </div>
+        }
+    }
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
